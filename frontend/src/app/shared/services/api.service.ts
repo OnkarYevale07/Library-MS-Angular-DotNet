@@ -2,7 +2,7 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { Subject } from 'rxjs';
-import { User, UserType } from '../../models/models';
+import { Book, User, UserType } from '../../models/models';
 
 @Injectable({
   providedIn: 'root'
@@ -58,5 +58,9 @@ userStatus:Subject<string>=new Subject();
   logout(){
     localStorage.removeItem('access_token');
     this.userStatus.next('loggedOff');
+  }
+
+  getBooks(){
+    return this.http.get<Book[]>(this.baseUrl+'/GetBooks');
   }
 }

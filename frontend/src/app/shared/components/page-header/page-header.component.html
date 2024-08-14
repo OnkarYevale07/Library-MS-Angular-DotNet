@@ -3,7 +3,9 @@
     <span class="spacer"></span>
 
     <div class="user-info">
-        <div class="name">Hi, Onkar Yevale</div>
+        @if (loggedIn) {
+            <div class="name">Hi, {{name}}</div>
+        }
         <button mat-raised-button color="accent">Profile</button>
         <button mat-raised-button color="warn" (click)="logout()">Log Out</button>
     </div>
